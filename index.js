@@ -4,7 +4,7 @@ const getDataFromAPI = async (userName) => {
     try {
         let response = await fetch("https://api.github.com/search/users?q=" + username.value);
         let myJson = await response.json();
-        console.log(myJson);   
+        console.log(myJson);
         for (let i = 0; i < myJson.items.length; i++) {
             createDivsMain(myJson.items[i]);
         }
@@ -25,19 +25,19 @@ const createDivsMain = (content) => {
     btnRepo.textContent = "Repositories";
     btnProfile.textContent = "Full Profile";
     name.textContent = content.login; //get header by repository login owner
-    userContainer.setAttribute("class","container-user");
-    userImg.setAttribute("src",content.avatar_url);
+    userContainer.setAttribute("class", "container-user");
+    userImg.setAttribute("src", content.avatar_url);
     //append child to container
     userContainer.appendChild(name);
     userContainer.appendChild(userImg);
     userContainer.appendChild(btnRepo);
     userContainer.appendChild(btnProfile);
     //click listener for loading repositories
-    btnRepo.addEventListener("click",function() {
+    btnRepo.addEventListener("click", function () {
         container.innerHTML = "";
         getDataRepo(content);
     });
-    
+
     container.appendChild(userContainer);
 }
 
@@ -51,23 +51,23 @@ const getDataRepo = async (content) => {
         let headerDiv = document.createElement("div");
         let mainHeader = document.createElement("h1");
         let userImg = document.createElement("img");
-        userImg.setAttribute("src",content.avatar_url);
+        userImg.setAttribute("src", content.avatar_url);
         mainHeader.textContent = content.login;
-        headerDiv.setAttribute("class","divHeader");
-            //append child to container
+        headerDiv.setAttribute("class", "divHeader");
+        //append child to container
         headerDiv.appendChild(userImg);
         headerDiv.appendChild(mainHeader);
         container.appendChild(headerDiv);
         //loop over the user repositories
         for (let i = 0; i < myJson.length; i++) {
-            createDivsRepos(myJson[i],content.repos_url);
+            createDivsRepos(myJson[i], content.repos_url);
         }
 
     } catch (err) {
         console.log(err);
     }
 }
-function createDivsRepos(content,url) {
+function createDivsRepos(content, url) {
     //creating html elements
     let container = document.querySelector(".container");
     let userContainer = document.createElement("div");
@@ -82,15 +82,15 @@ function createDivsRepos(content,url) {
     header.textContent = content.full_name;
     a.href = url;
     a.textContent = url;
-    forks.textContent = "Forks : "+content.forks;
-    watchers.textContent = "Watchers : "+content.watchers;
+    forks.textContent = "Forks : " + content.forks;
+    watchers.textContent = "Watchers : " + content.watchers;
     //setting flag value
     if (container.private === "true")
         flag.textContent = "Private";
-    else flag.textContent = "Public";     
-    flag.setAttribute("class","flag");
+    else flag.textContent = "Public";
+    flag.setAttribute("class", "flag");
     //appends all childs to page
-    userContainer.setAttribute("class","container-user");
+    userContainer.setAttribute("class", "container-user");
     userContainer.appendChild(header);
     userContainer.appendChild(forks);
     userContainer.appendChild(watchers);
