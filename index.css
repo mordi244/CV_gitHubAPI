@@ -6,6 +6,7 @@ body {
 /* centing header */
 h1 {
     text-align: center;
+    margin-left:22rem;
 }
 h4 {
     display: inline;
@@ -20,18 +21,29 @@ h5 {
 /* main container */
 .container {
     border: 1px gray solid;
-    position: relative;
 }
 
 /* sub container for user details*/
 .container-user {
-    position:relative;
+    position: relative;
+    margin:50px;
+    border: 1px solid rgb(137, 150, 137);
     float:left;
     width: 38%;
-    border: 1px solid rgb(137, 150, 137);
-    margin : 0.8em;
-    padding:0.2em;
-
+    padding:0.5rem;
+}
+.container-user > img {
+   height: 150px; 
+   display:inline-block;
+   vertical-align: middle;
+   position: relative;
+}
+.divname {
+    width :100px;
+    height: 100px;
+    padding: 20px;
+    display:inline-block;
+    vertical-align: middle;
 }
 .divHeader {
     position: relative;
@@ -42,25 +54,13 @@ h5 {
 }
 /* for images inside the header for user repositories*/
 .divHeader img {
-    left:0px;
-    display: inline-block;
-    width: 30%;
-    height: 60%;
+  height: 150px;
+  display:inline-block;
+  vertical-align: middle;
 }
 
 /* for images inside the user container at the main page */
-.container-user img {
-    width: 30%;
-    height: 60%;
-    margin-left: 10%;
-    margin-right: auto;
-    margin-top: 1em ;    
-    margin-bottom: 1em;
-    display: block;
-    padding:0.5em;
-    float:left;
 
-}
 
 /* for a href (git link) */
  a {
@@ -79,6 +79,7 @@ h5 {
  }
  p {
      font-size:15px;
+     
  }
  /* boolean flag - position at the top right of the screen */
  .flag {

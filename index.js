@@ -22,21 +22,28 @@ const createDivsMain = (content) => {
     let userContainer = document.createElement("div");
     let userImg = document.createElement("img");
     let name = document.createElement("h4");
+    let divname = document.createElement("div");
     let btnRepo = document.createElement('button');
     let btnProfile = document.createElement('button');
     divh1.appendChild(name);
+    divname.appendChild(name);
     btnRepo.textContent = "Repositories";
     btnProfile.textContent = "Full Profile";
     name.textContent = content.login; //get header by repository login owner
     userContainer.setAttribute("class", "container-user");
     userImg.setAttribute("src", content.avatar_url);
     //append child to container
+    divname.appendChild(btnRepo);
+    divname.appendChild(btnProfile);
     divimg.appendChild(userImg);
-    userContainer.appendChild(divh1);
-    userContainer.appendChild(divimg);
-    userContainer.appendChild(name);
-    userContainer.appendChild(btnRepo);
-    userContainer.appendChild(btnProfile);
+    divname.setAttribute("class","divname");
+    //userContainer.appendChild(divimg);
+    userContainer.appendChild(userImg);
+    userContainer.appendChild(divname);
+    // userContainer.appendChild(divh1);
+    // userContainer.appendChild(name);
+    // userContainer.appendChild(btnRepo);
+    // userContainer.appendChild(btnProfile);
     container.appendChild(userContainer);
     
     //click listener for loading repositories
