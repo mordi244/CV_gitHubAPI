@@ -5,7 +5,12 @@ body {
 }
 h1 {
     text-align: center;
+}
+h2 {
     margin-left:22rem;
+    vertical-align: middle;
+    text-align: center;
+
 }
 h4 {
     display: inline;
@@ -44,11 +49,11 @@ h5 {
     height: 100px;
     padding: 20px;
     display:inline-block;
-    vertical-align: middle;
 }
 .divHeader {
     position: relative;
     display: block;
+    margin: auto;
 }
 .divHeader div {
     display: inline-block;

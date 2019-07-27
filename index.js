@@ -64,7 +64,7 @@ const getDataRepo = async (content) => {
         let headerDiv = document.createElement("div");
         let h1Div = document.createElement("div");
         let imgDiv = document.createElement("div");
-        let mainHeader = document.createElement("h1");
+        let mainHeader = document.createElement("h2");
         let userImg = document.createElement("img");
         userImg.setAttribute("src", content.avatar_url);
         mainHeader.textContent = content.login + "'s "+ ' Repositories (' + myJson.length + ')';
