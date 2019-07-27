@@ -46,7 +46,8 @@ const createDivsMain = (content) => {
     });
     //click listener for loading profile site
     btnProfile.addEventListener("click", function () {
-        window.location = content.html_url;
+        //window.location = content.html_url;
+        window.open(content.html_url,'_blank');
     });
 }
 
