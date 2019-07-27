@@ -15,6 +15,13 @@ const getDataFromAPI = async (userName) => {
 
 //create html elements for the main page
 const createDivsMain = (content) => {
+    //
+    let divimg = document.createElement("div");
+    let divh = document.createElement("div");
+    let mainDiv222 = document.createElement("div");
+
+
+    //
     // create html elements
     let container = document.querySelector(".container");
     let userContainer = document.createElement("div");
@@ -22,20 +29,28 @@ const createDivsMain = (content) => {
     let name = document.createElement("h4");
     let btnRepo = document.createElement('button');
     let btnProfile = document.createElement('button');
+    divh.appendChild(name);
     btnRepo.textContent = "Repositories";
     btnProfile.textContent = "Full Profile";
     name.textContent = content.login; //get header by repository login owner
     userContainer.setAttribute("class", "container-user");
     userImg.setAttribute("src", content.avatar_url);
+    divimg.appendChild(userImg);
     //append child to container
+    userContainer.appendChild(divimg);
     userContainer.appendChild(name);
-    userContainer.appendChild(userImg);
     userContainer.appendChild(btnRepo);
     userContainer.appendChild(btnProfile);
+    
+
     //click listener for loading repositories
     btnRepo.addEventListener("click", function () {
         container.innerHTML = "";
         getDataRepo(content);
+    });
+    btnProfile.addEventListener("click",function() {
+        console.log("fdfsdf");
+        window.location = content.html_url;
     });
 
     container.appendChild(userContainer);
@@ -47,16 +62,21 @@ const getDataRepo = async (content) => {
         let response = await fetch(content.repos_url);
         let myJson = await response.json();
         //creating html elements
+        console.log(myJson);
         let container = document.querySelector(".container");
         let headerDiv = document.createElement("div");
+        let h1Div = document.createElement("div");
+        let imgDiv = document.createElement("div");
         let mainHeader = document.createElement("h1");
         let userImg = document.createElement("img");
         userImg.setAttribute("src", content.avatar_url);
-        mainHeader.textContent = content.login;
+        mainHeader.textContent = content.login +' Repositories ('+myJson.length +')';
         headerDiv.setAttribute("class", "divHeader");
+        imgDiv.appendChild(userImg);
+        h1Div.appendChild(mainHeader);
         //append child to container
-        headerDiv.appendChild(userImg);
-        headerDiv.appendChild(mainHeader);
+        headerDiv.appendChild(imgDiv);
+        headerDiv.appendChild(h1Div);
         container.appendChild(headerDiv);
         //loop over the user repositories
         for (let i = 0; i < myJson.length; i++) {
